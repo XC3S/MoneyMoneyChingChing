@@ -8,9 +8,64 @@ const fs = require('fs')
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
+var depotManager = require('./depotManager.js');
+
+depotManager.createDepot(
+  "DynamicScaling4Step",
+  {
+    actionOffset: 0.0002,
+    actionVolume: 0.245
+  },
+  function(stockData){
+    // tick function
+    //console.log("tick",stockData.bid);
+
+    if(stockData.ask < this.storage.nextEntry) {
+      var amount = 100; //@TODO: implement amount
+      this.buy(stockData,amount,function(){
+        // success  
+        this.storage.nextEntry = stockData.ask * (1 - this.settings.actionOffset);
+        this.storage.nextExit  = stockData.ask * (1 + this.settings.actionOffset);
+        console.log("buy");
+      },function(){
+        // failed
+        // @TODO: implement emergecy exit
+        console.log("failed - im done :/");
+      });
+    }
+
+    if(stockData.bid * this.bank.hold) {
+      var amount = 100; // @TODO: implement amount
+
+      this.sell(stockData,amount,function(){
+        // success
+        this.storage.nextEntry = stockData.ask * (1 - this.settings.actionOffset);
+        this.storage.nextExit  = stockData.ask * (1 + this.settings.actionOffset);
+        console.log("sell");
+      },function(){
+        // failed
+        // not really a fail... just nothing to so... just raice the entry point
+        this.storage.nextEntry = stockData.ask * (1 - this.settings.actionOffset);
+        this.storage.nextExit  = stockData.ask * (1 + this.settings.actionOffset);
+        console.log("raise the entrypoint");
+      });
+    }
+  },
+  function(stockData){
+    // init function
+    this.storage.startExchangeRate = stockData.ask;
+    this.storage.lastEntry = stockData.ask;
+    this.storage.nextEntry = this.storage.lastEntry * (1 - this.settings.actionOffset);
+    this.storage.nextExit  = this.storage.lastEntry * (1 + this.settings.actionOffset);
+    
+    console.log("nextEntry",this.storage.nextEntry);
+    console.log("nextExit",this.storage.nextExit);
+  }
+);
+
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow({width: 1400, height: 800})
 
   // and load the index.html of the app.
   /*
@@ -39,7 +94,7 @@ function createWindow () {
   });
 
   ipc.on('gpu', (_, gpu) => {
-    console.log(gpu)
+    depotManager.tick(parseFloat(gpu));
   })
 
 
