@@ -51,11 +51,11 @@ function depotManager(){
 				if(this.bank.money > stockData.ask * amount) {
 					this.bank.money -= (amount * stockData.ask);
 					this.bank.hold += amount;
-					successCallback();
+					successCallback(depot);
 					return
 				}
 
-				failCallback();
+				failCallback(depot);
 			};
 
 			depot.sell = function(stockData,amount,success,fail) {
@@ -65,11 +65,11 @@ function depotManager(){
 				if(this.bank.hold > 0) {
 					this.bank.money += (amount * stockData.bid);
 					this.bank.hold -= amount;
-					successCallback();
+					successCallback(depot);
 					return
 				}
 
-				failCallback();
+				failCallback(depot);
 			};
 
 			depot.tick = tickFunction;

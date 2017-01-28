@@ -10,43 +10,49 @@ let win
 
 var depotManager = require('./depotManager.js');
 
+var options = {
+  actionOffset: 0.0002,
+  actionVolume: 0.245  
+}
+
 depotManager.createDepot(
   "DynamicScaling4Step",
-  {
-    actionOffset: 0.0002,
-    actionVolume: 0.245
-  },
+  options,
   function(stockData){
     // tick function
     //console.log("tick",stockData.bid);
 
     if(stockData.ask < this.storage.nextEntry) {
       var amount = 100; //@TODO: implement amount
-      this.buy(stockData,amount,function(){
+      this.buy(stockData,amount,function(scope){
+        // console.log("scope:",JSON.stringify(scope));
         // success  
-        this.storage.nextEntry = stockData.ask * (1 - this.settings.actionOffset);
-        this.storage.nextExit  = stockData.ask * (1 + this.settings.actionOffset);
-        console.log("buy");
-      },function(){
+        scope.storage.totalInvest += stockData.ask * amount;
+        scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
+        scope.storage.nextExit  = scope.storage.totalInvest * (1 + options.actionOffset);
+        console.log("buy - total: ",scope.bank.money);
+
+      },function(scope){
         // failed
         // @TODO: implement emergecy exit
         console.log("failed - im done :/");
       });
     }
 
-    if(stockData.bid * this.bank.hold) {
+    if(stockData.bid * this.bank.hold > this.storage.nextExit) {
       var amount = 100; // @TODO: implement amount
 
-      this.sell(stockData,amount,function(){
+      this.sell(stockData,amount,function(scope){
         // success
-        this.storage.nextEntry = stockData.ask * (1 - this.settings.actionOffset);
-        this.storage.nextExit  = stockData.ask * (1 + this.settings.actionOffset);
-        console.log("sell");
-      },function(){
+        scope.storage.totalInvest -= amount * stockData.bid;
+        scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
+        scope.storage.nextExit  = stockData.ask * (1 + options.actionOffset);
+        console.log("sell - total: ",scope.bank.money);
+      },function(scope){
         // failed
         // not really a fail... just nothing to so... just raice the entry point
-        this.storage.nextEntry = stockData.ask * (1 - this.settings.actionOffset);
-        this.storage.nextExit  = stockData.ask * (1 + this.settings.actionOffset);
+        scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
+        scope.storage.nextExit  = stockData.ask * (1 + options.actionOffset);
         console.log("raise the entrypoint");
       });
     }
@@ -57,6 +63,7 @@ depotManager.createDepot(
     this.storage.lastEntry = stockData.ask;
     this.storage.nextEntry = this.storage.lastEntry * (1 - this.settings.actionOffset);
     this.storage.nextExit  = this.storage.lastEntry * (1 + this.settings.actionOffset);
+    this.storage.totalInvest = 0; 
     
     console.log("nextEntry",this.storage.nextEntry);
     console.log("nextExit",this.storage.nextExit);
