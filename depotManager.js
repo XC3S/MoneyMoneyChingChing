@@ -3,22 +3,16 @@ module.exports = depotManager();
 function depotManager(){
 	var depots = [];
 
-	var globalSettings = {
-		spread: 0.00018,
-		startMoney: 10000,
-		leverage: 50
-	};
-
 	console.log("init depotManager");
 
 	return {
 		tick: function(value){
-			var stockData = {
-				bid: value,
-				ask: value + globalSettings.spread	// forex trading platform like tradeking use a custom spread instead of an comision
-			}
-
 			depots.forEach(function(entry){
+				var stockData = {
+					bid: value,
+					ask: value + entry.settings.spread	// forex trading platform like tradeking use a custom spread instead of an comision
+				}
+
 				if(!entry.storage.initialized) {
 					entry.init(stockData);
 					entry.storage.initialized = true;
@@ -35,7 +29,7 @@ function depotManager(){
 			var depot = {
 				id: identifier,
 				bank: {
-					money: globalSettings.startMoney,
+					money: options.startMoney,
 					hold: 0
 				},
 				settings: options,

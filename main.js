@@ -1,9 +1,11 @@
 const {app, BrowserWindow} = require('electron')
 var electron = require('electron');
 
-const path = require('path')
-const url = require('url')
-const fs = require('fs')
+var path = require('path')
+var url = require('url')
+var fs = require('fs')
+var _ = require('underscore-node')
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
@@ -11,49 +13,61 @@ let win
 var depotManager = require('./depotManager.js');
 
 var options = {
-  actionOffset: 0.0002,
-  actionVolume: 0.245  
+  actionOffset: 0.0003,
+  actionVolume: 0.1
 }
 
+var globalSettings = {
+  spread: 0.00018,
+  startMoney: 10000,
+  leverage: 50
+};
+
+// extend options with global options
+options = _.extend(options,globalSettings);
+
 depotManager.createDepot(
-  "DynamicScaling4Step",
+  'DynamicScaling4Step',
   options,
   function(stockData){
     // tick function
     //console.log("tick",stockData.bid);
 
     if(stockData.ask < this.storage.nextEntry) {
-      var amount = 100; //@TODO: implement amount
+      //var amount = 100; //@TODO: implement amount
+      var amount = (options.startMoney * options.actionVolume) / stockData.ask;
+
       this.buy(stockData,amount,function(scope){
         // console.log("scope:",JSON.stringify(scope));
         // success  
         scope.storage.totalInvest += stockData.ask * amount;
         scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
         scope.storage.nextExit  = scope.storage.totalInvest * (1 + options.actionOffset);
-        console.log("buy - total: ",scope.bank.money);
+        console.log('buy(amount:', amount , ') - money: ',scope.bank.money);
 
       },function(scope){
         // failed
         // @TODO: implement emergecy exit
-        console.log("failed - im done :/");
+        console.log('failed - im done :/');
       });
     }
 
     if(stockData.bid * this.bank.hold > this.storage.nextExit) {
-      var amount = 100; // @TODO: implement amount
+      //var amount = 100; // @TODO: implement amount
+      var amount = this.bank.hold;
 
       this.sell(stockData,amount,function(scope){
         // success
         scope.storage.totalInvest -= amount * stockData.bid;
         scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
         scope.storage.nextExit  = stockData.ask * (1 + options.actionOffset);
-        console.log("sell - total: ",scope.bank.money);
+        console.log('sell(amount:', amount ,') - total: ',scope.bank.money);
       },function(scope){
         // failed
         // not really a fail... just nothing to so... just raice the entry point
         scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
         scope.storage.nextExit  = stockData.ask * (1 + options.actionOffset);
-        console.log("raise the entrypoint");
+        console.log('raise the entrypoint');
       });
     }
   },
@@ -65,8 +79,8 @@ depotManager.createDepot(
     this.storage.nextExit  = this.storage.lastEntry * (1 + this.settings.actionOffset);
     this.storage.totalInvest = 0; 
     
-    console.log("nextEntry",this.storage.nextEntry);
-    console.log("nextExit",this.storage.nextExit);
+    console.log('nextEntry',this.storage.nextEntry);
+    console.log('nextExit',this.storage.nextExit);
   }
 );
 
@@ -85,11 +99,12 @@ function createWindow () {
 
   var ipc = electron.ipcMain;
 
-  win.loadURL("https://www.dailyfx.com/deutsch/kostenlose_forex_charts/kurse");
+  win.loadURL('https://www.dailyfx.com/deutsch/kostenlose_forex_charts/kurse');
   //win.loadURL('https://github.com')
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  // devtools causing errors on mac
+  //win.webContents.openDevTools()
 
   win.webContents.on('dom-ready', () => {
     setInterval(function(){
