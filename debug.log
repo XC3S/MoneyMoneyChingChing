@@ -1,0 +1,198 @@
+
+init depotManager
+nextEntry 1.075462
+nextExit 1.0765379999999998
+
+buy :  
+{
+	"id":"DynamicScaling10Step",
+	"bank": {
+		"money":9000,
+		"margin":1000000,
+		"hold":929.834675394715
+	},
+	"settings":{
+		"actionOffset":0.0005,
+		"actionVolume":0.1,
+		"targetProfit":1,
+		"spread":0.00006,
+		"startMoney":10000,
+		"leverage":100
+	},
+	"storage":{
+		"initialized":true,
+		"startExchangeRate":1.0759999999999998,
+		"lastEntry":1.0759999999999998,
+		"nextEntry":1.0749222699999998,
+		"nextExit":1001,
+		"totalInvest":1000
+	}
+}
+
+
+buy :  
+{
+	"id":"DynamicScaling10Step",
+	"bank":{
+		"money":8000,
+		"margin":1000000,
+		"hold":1860.1451199900764
+	},
+	"settings":{
+		"actionOffset":0.0005,
+		"actionVolume":0.1,
+		"targetProfit":1,
+		"spread":0.00006,
+		"startMoney":10000,
+		"leverage":100
+	},
+	"storage":{
+		"initialized":true,
+		"startExchangeRate":1.0759999999999998,
+		"lastEntry":1.0759999999999998,
+		"nextEntry":1.0743725450000001,
+		"nextExit":2001,
+		"totalInvest":2000
+	}
+}
+
+
+sell :  
+{
+	"id":"DynamicScaling10Step",
+	"bank":{
+		"money":10001.088315731724,
+		"margin":1000000,
+		"hold":0
+	},
+	"settings":{
+		"actionOffset":0.0005,
+		"actionVolume":0.1,
+		"targetProfit":1,
+		"spread":0.00006,
+		"startMoney":10000,
+		"leverage":100
+	},
+	"storage":{
+		"initialized":true,
+		"startExchangeRate":1.0759999999999998,
+		"lastEntry":1.0759999999999998,
+		"nextEntry":1.0752920849999998,
+		"nextExit":1.0763679149999998,
+		"totalInvest":-1.0883157317243786
+	}
+}
+
+
+buy :  
+{
+	"id":"DynamicScaling10Step",
+	"bank":{
+		"money":9001.088315731724,
+		"margin":1000000,
+		"hold":930.042223916966
+	},
+	"settings":{
+		"actionOffset":0.0005,
+		"actionVolume":0.1,
+		"targetProfit":1,
+		"spread":0.00006,
+		"startMoney":10000,
+		"leverage":100
+	},
+	"storage":{
+		"initialized":true,
+		"startExchangeRate":1.0759999999999998,
+		"lastEntry":1.0759999999999998,
+		"nextEntry":1.07468239,
+		"nextExit":999.9116842682756,
+		"totalInvest":998.9116842682756
+	}
+}
+
+
+sell :  
+{
+	"id":"DynamicScaling10Step",
+	"bank":{
+		"money":10001.03251319829,
+		"margin":1000000,
+		"hold":0
+	},
+	"settings":{
+		"actionOffset":0.0005,
+		"actionVolume":0.1,
+		"targetProfit":1,
+		"spread":0.00006,
+		"startMoney":10000,
+		"leverage":100
+	},
+	"storage":{
+		"initialized":true,
+		"startExchangeRate":1.0759999999999998,
+		"lastEntry":1.0759999999999998,
+		"nextEntry":1.07468239,
+		"nextExit":1.0757576099999997,
+		"totalInvest":-1.0325131982895073
+	}
+}
+
+
+buy :  
+{
+	"id":"DynamicScaling10Step",
+	"bank":{
+		"money":9001.03251319829,
+		"margin":1000000,
+		"hold":930.5182055886924
+	},
+	"settings":{
+		"actionOffset":0.0005,
+		"actionVolume":0.1,
+		"targetProfit":1,
+		"spread":0.00006,
+		"startMoney":10000,
+		"leverage":100
+	},
+	"storage":{
+		"initialized":true,
+		"startExchangeRate":1.0759999999999998,
+		"lastEntry":1.0759999999999998,
+		"nextEntry":1.074132665,
+		"nextExit":999.9674868017105,
+		"totalInvest":998.9674868017105
+	}
+}
+
+
+sell :  
+{
+	"id":"DynamicScaling10Step",
+	"bank":{
+		"money":10001.013902834178,
+		"margin":1000000,
+		"hold":0
+	},
+	"settings":{
+		"actionOffset":0.0005,
+		"actionVolume":0.1,
+		"targetProfit":1,
+		"spread":0.00006,
+		"startMoney":10000,
+		"leverage":100
+	},
+	"storage":{
+		"initialized":true,
+		"startExchangeRate":1.0759999999999998,
+		"lastEntry":1.0759999999999998,
+		"nextEntry":1.0741726450000002,
+		"nextExit":1.075247355,
+		"totalInvest":-1.013902834177884
+	}
+}
+
+
+
+
+
+

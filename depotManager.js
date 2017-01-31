@@ -30,6 +30,7 @@ function depotManager(){
 				id: identifier,
 				bank: {
 					money: options.startMoney,
+					margin: options.startMoney * options.leverage,
 					hold: 0
 				},
 				settings: options,

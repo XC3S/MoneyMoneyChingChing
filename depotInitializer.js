@@ -5,14 +5,15 @@ var _ = require('underscore-node')
 function depotInitializer(depotManager){
 
 	var options = {
-		actionOffset: 0.0003,
-		actionVolume: 0.1
+		actionOffset: 0.0005,
+		actionVolume: 0.1,
+		targetProfit: 1	//€
 	};
 
 	var globalSettings = {
-		spread: 0.00018,
+		spread: 0.00006,
 		startMoney: 10000,
-		leverage: 50
+		leverage: 100
 	};
 
 	// extend options with global options
@@ -34,8 +35,9 @@ function depotInitializer(depotManager){
 	        		// success  
 	        		scope.storage.totalInvest += stockData.ask * amount;
 			        scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
-			        scope.storage.nextExit  = scope.storage.totalInvest * (1 + options.actionOffset);
-			        console.log('buy(amount:', amount , ') - money: ',scope.bank.money);
+			        scope.storage.nextExit  = scope.storage.totalInvest + options.targetProfit;
+			        //console.log('buy(amount:', amount , ') - money: ',scope.bank.money);
+			        console.log("buy : ",JSON.stringify(scope));
 
 	    		},function(scope){
 	        		// failed
@@ -53,7 +55,8 @@ function depotInitializer(depotManager){
 	        		scope.storage.totalInvest -= amount * stockData.bid;
 	        		scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
 	        		scope.storage.nextExit  = stockData.ask * (1 + options.actionOffset);
-	        		console.log('sell(amount:', amount ,') - total: ',scope.bank.money);
+	        		//console.log('sell(amount:', amount ,') - total: ',scope.bank.money);
+	        		console.log("sell : ",JSON.stringify(scope));
 	    		},function(scope){
 	        		// failed
 	        		// not really a fail... just nothing to so... just raice the entry point
