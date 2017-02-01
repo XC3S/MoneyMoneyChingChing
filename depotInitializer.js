@@ -35,7 +35,7 @@ function depotInitializer(depotManager){
 	        		// success  
 	        		scope.storage.totalInvest += stockData.ask * amount;
 			        scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
-			        scope.storage.nextExit  = scope.storage.totalInvest + options.targetProfit;
+			        scope.storage.nextExit = (scope.storage.totalInvest + options.targetProfit) / storage.bank.hold ;
 			        //console.log('buy(amount:', amount , ') - money: ',scope.bank.money);
 			        console.log("buy : ",JSON.stringify(scope));
 
@@ -46,15 +46,16 @@ function depotInitializer(depotManager){
 	     		});
 			}
 
-	    	if(stockData.bid * this.bank.hold > this.storage.nextExit) {
+	    	if(stockData.bid > this.storage.nextExit) {
 	      		//var amount = 100; // @TODO: implement amount
 	    		var amount = this.bank.hold;
 
 	    		this.sell(stockData,amount,function(scope){
 	    			// success
 	        		scope.storage.totalInvest -= amount * stockData.bid;
+	        		scope.storage.totalInvest = (scope.storage.totalInvest < 0) ? 0 : scope.storage.totalInvest;
 	        		scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
-	        		scope.storage.nextExit  = stockData.ask * (1 + options.actionOffset);
+	        		scope.storage.nextExit = stockData.ask * (1 + options.actionOffset);
 	        		//console.log('sell(amount:', amount ,') - total: ',scope.bank.money);
 	        		console.log("sell : ",JSON.stringify(scope));
 	    		},function(scope){
