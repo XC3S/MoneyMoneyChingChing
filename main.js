@@ -16,7 +16,7 @@ var depotInitializer = require('./depotInitializer.js')(depotManager);
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 1400, height: 800})
+  win = new BrowserWindow({width: 1400, height: 800, show: false})
 
   var ipc = electron.ipcMain;
 
