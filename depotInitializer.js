@@ -5,7 +5,7 @@ var _ = require('underscore-node')
 function depotInitializer(depotManager){
 
 	var options = {
-		actionOffset: 0.0005,
+		actionOffset: 0.0002,
 		actionVolume: 0.1,
 		targetProfit: 1	//€
 	};
@@ -35,13 +35,16 @@ function depotInitializer(depotManager){
 	        		// success  
 	        		scope.storage.totalInvest += stockData.ask * amount;
 			        scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
-			        scope.storage.nextExit = (scope.storage.totalInvest + options.targetProfit) / storage.bank.hold ;
+			        scope.storage.nextExit = (scope.storage.totalInvest + options.targetProfit) / scope.bank.hold ;
 			        //console.log('buy(amount:', amount , ') - money: ',scope.bank.money);
 			        console.log("buy : ",JSON.stringify(scope));
 
 	    		},function(scope){
-	        		// failed
-	        		// @TODO: implement emergecy exit
+	        		// failed... sell all... try it again
+	        		scope.storage.totalInvest -= amount * stockData.bid;
+	        		scope.storage.totalInvest = (scope.storage.totalInvest < 0) ? 0 : scope.storage.totalInvest;
+	        		scope.storage.nextEntry = stockData.ask * (1 - options.actionOffset);
+	        		scope.storage.nextExit = stockData.ask * (1 + options.actionOffset);
 	        		console.log('failed - im done :/');
 	     		});
 			}
