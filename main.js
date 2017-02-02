@@ -12,6 +12,7 @@ let win
 
 var depotManager = require('./depotManager.js');
 var depotInitializer = require('./depotInitializer.js')(depotManager);
+var webServerProvider = require('./webServerProvider.js')(depotManager);
 
 
 function createWindow () {
