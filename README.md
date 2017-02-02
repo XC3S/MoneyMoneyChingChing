@@ -1,4 +1,4 @@
 # MoneyMoneyChingChing
-A project to test automated trading strategies
+Test and compare automatic forex trading. Contains a crawler for forex curses (from dailyfx.com) and webinterface to view the results.
 
-![Alt text](https://media.giphy.com/media/LdOyjZ7io5Msw/giphy.gif)
+![Alt text](https://media.giphy.com/media/qQi2fUiMxH9DO/giphy.gif)
