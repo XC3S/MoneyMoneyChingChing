@@ -5,9 +5,9 @@ var _ = require('underscore-node')
 function depotInitializer(depotManager){
 
 	var options = {
-		actionOffset: 0.0002,
+		actionOffset: 0.0003,
 		actionVolume: 0.1,
-		targetProfit: 1	//€
+		targetProfit: 2	//€
 	};
 
 	var globalSettings = {

@@ -26,7 +26,7 @@ function createWindow () {
 
   // Open the DevTools.
   // devtools causing errors on mac
-  //win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   // crawler
   // grap the page html directly from the rendering buffer
@@ -40,7 +40,7 @@ function createWindow () {
 
   ipc.on('eurusd', (_, eurusd) => {
     depotManager.tick(parseFloat(eurusd));
-  })
+  });
 
 
 

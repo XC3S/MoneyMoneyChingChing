@@ -1,14 +1,18 @@
 module.exports = webServerProvider;
 
-var express = require('express')();
-var server = require('http').Server(express);
+var express = require('express');
+var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 function webServerProvider(depotManager){
 	// launch server
-	server.listen(3000);
-
-	//provide fontend entry point
-	express.get('/',function(req,res){
-		res.sendFile(__dirname + '/frontend/index.html');
+	server.listen(3000,function(){
+		console.log("webserver started!");
 	});
+
+	// host frontend sources
+	app.use(express.static(__dirname + '/frontend'));
+
+	// 
 }

@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 	<head>
+		<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+		<link rel="dns-prefetch" href="https://ajax.googleapis.com">
+		<link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com">
+
 		<title>MoneyMoneyChingChing</title>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/depotList.css">
 	</head>
 	<body>
-		<h1>MoneyMoneyChingChing!<h1>
+		<div ng-controller="depotController">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<h1>MoneyMoneyChingChing!</h1>
+						<p>lorum ipsum {{getDepots()}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12" ng-repeat="depot in getDepots()">
+						Depot: {{depot.id}}
+					</div>
+				</div>
+				
+			</div>
+		</div>
 
 		<!-- libs & frameworks -->
 		<script src="/socket.io/socket.io.js"></script>
@@ -18,11 +38,15 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 
 		<!-- apps -->
+		<script src="/js/application/application.js"></script>
 
 		<!-- core services -->
+		<script src="/js/network/socketService.js"></script>
 
 		<!-- high level services -->
+		<script src="/js/depot/depotService.js"></script>
 
 		<!-- controllers -->
+		<script src="/js/depot/depotController.js"></script>
 	</body>
 </html>
