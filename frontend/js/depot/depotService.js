@@ -4,8 +4,7 @@ app.factory('$depot',function($socket){
 	}];
 
 	$socket.on('receiveDepotData',function(data){
-		console.log(data);
-		depots = data;	
+		depots = data || [];
 	});
 
 	return {

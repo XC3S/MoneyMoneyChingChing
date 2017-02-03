@@ -14,5 +14,8 @@ function webServerProvider(depotManager){
 	// host frontend sources
 	app.use(express.static(__dirname + '/frontend'));
 
-	// 
+	// replicate changes
+	depotManager.onTick(function(){
+		io.emit("receiveDepotData",depotManager.getDepots());
+	});
 }

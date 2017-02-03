@@ -5,6 +5,8 @@ function depotManager(){
 
 	console.log("init depotManager");
 
+	var tickCallbacks = [];
+
 	return {
 		tick: function(value){
 			depots.forEach(function(entry){
@@ -21,6 +23,12 @@ function depotManager(){
 					entry.tick(stockData);
 				}
 			});
+			tickCallbacks.forEach(function(callback){
+				callback();
+			});
+		},
+		onTick: function(callback){
+			tickCallbacks.push(callback);	
 		},
 		getDepots: function(){
 			return depots
