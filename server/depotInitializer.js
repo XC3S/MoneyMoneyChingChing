@@ -15,6 +15,10 @@ function depotInitializer(depotManager){
 		"./depots/Gambler.js"
 	];
 
+	// Names: Titanic,Dreamer,Trendy,CookieCutter,Specter,BananaRazer,Tensions
+
+	// Features: w8 for huge timebased drops; Trend Following
+
 	_.each(depotList,function(entry){
 		require(entry)(depotManager,globalSettings);
 	});
