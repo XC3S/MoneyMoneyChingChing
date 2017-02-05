@@ -1,3 +1,20 @@
 :root {
-	font-size: calc(0.5em + 1vw);
+	font-size: calc(0.75em + 0.5vw);
+}
+
+.course {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.course-box {
+	text-align: center;
+	box-shadow: 0 1em 2em rgba(0,0,0,0.25), 0 0.75em 0.75em rgba(0,0,0,0.22);
+	padding: 2em 0;
+}
+
+.spacer {
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+	margin: 15px;
 }

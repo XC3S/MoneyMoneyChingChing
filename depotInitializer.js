@@ -20,7 +20,7 @@ function depotInitializer(depotManager){
 	options = _.extend(options,globalSettings);
 
 	depotManager.createDepot(
-		'DynamicScaling10Step',
+		'10%InvestSteps2€FixedProfit',
 		options,
 		function(stockData){
 			// tick function

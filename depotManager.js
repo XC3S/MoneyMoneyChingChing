@@ -2,6 +2,7 @@ module.exports = depotManager();
 
 function depotManager(){
 	var depots = [];
+	var lastStockData = {};
 
 	console.log("init depotManager");
 
@@ -10,7 +11,7 @@ function depotManager(){
 	return {
 		tick: function(value){
 			depots.forEach(function(entry){
-				var stockData = {
+				var stockData = lastStockData = {
 					bid: value,
 					ask: value + entry.settings.spread	// forex trading platform like tradeking use a custom spread instead of an comision
 				}
@@ -32,6 +33,9 @@ function depotManager(){
 		},
 		getDepots: function(){
 			return depots
+		},
+		getStockData: function(){
+			return lastStockData
 		},
 		createDepot: function(identifier,options,tickFunction,initFunction){
 			var depot = {

@@ -16,6 +16,9 @@ function webServerProvider(depotManager){
 
 	// replicate changes
 	depotManager.onTick(function(){
-		io.emit("receiveDepotData",depotManager.getDepots());
+		io.emit("receiveDepotData",{
+			'depots': depotManager.getDepots(),
+			'curse': depotManager.getStockData()
+		});
 	});
 }
