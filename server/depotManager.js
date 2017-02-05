@@ -4,8 +4,6 @@ function depotManager(){
 	var depots = [];
 	var lastStockData = {};
 
-	console.log("init depotManager");
-
 	var tickCallbacks = [];
 
 	return {
@@ -37,9 +35,10 @@ function depotManager(){
 		getStockData: function(){
 			return lastStockData
 		},
-		createDepot: function(identifier,options,tickFunction,initFunction){
+		createDepot: function(identifier,description,options,tickFunction,initFunction){
 			var depot = {
 				id: identifier,
+				description: description,
 				bank: {
 					money: options.startMoney,
 					margin: options.startMoney * options.leverage,

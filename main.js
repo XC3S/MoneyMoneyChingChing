@@ -10,9 +10,9 @@ var _ = require('underscore-node')
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
-var depotManager = require('./depotManager.js');
-var depotInitializer = require('./depotInitializer.js')(depotManager);
-var webServerProvider = require('./webServerProvider.js')(depotManager);
+var depotManager = require('./server/depotManager.js');
+var depotInitializer = require('./server/depotInitializer.js')(depotManager);
+var webServerProvider = require('./server/webServerProvider.js')(depotManager);
 
 
 function createWindow () {
