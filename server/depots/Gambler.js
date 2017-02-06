@@ -6,7 +6,7 @@ function atlas(depotManager,globalSettings){
 	var options = {
 		actionOffset: 0.0005,
 		actionVolume: 0.05,
-		targetProfit: 2,//€
+		targetProfit: 1,//€
 		increase: 1.25
 	};
 
@@ -15,7 +15,7 @@ function atlas(depotManager,globalSettings){
 
 	depotManager.createDepot(
 		'Gambler',
-		'Start with a 5% invest and reinvest more on every 5pid lose. Each step is 25% bigger then the one before. Sell all if you reach a fixed profit of 2€.',
+		'Start with a 5% invest and reinvest more on every 5 pid lose. Each step is 25% bigger then the one before. Sell all if you reach a fixed profit of 1€.',
 		options,
 		function(stockData){
 			// tick function
