@@ -11,18 +11,21 @@ if [ $# -eq 0 ]
 fi
 
 if [ "$1" == "-start" ]
-	screen -S electron -dm xvfb-run ./node_modules/.bin/electron .
-	echo "starting server..."
+	then
+		screen -S electron -dm xvfb-run ./node_modules/.bin/electron .
+		echo "starting server..."
 fi
 
 if [ "$1" == "-stop" ]
-	screen -S electron -X quit
-	echo "stopped server..."
+	then
+		screen -S electron -X quit
+		echo "stopped server..."
 fi
 
 if [ "$1" == "-deploy" ]
-	screen -S electron -X quit
-	echo "stopped server..."
-	git pull -r
-	echo "updated version..."
+	then
+		screen -S electron -X quit
+		echo "stopped server..."
+		git pull -r
+		echo "updated version..."
 fi
