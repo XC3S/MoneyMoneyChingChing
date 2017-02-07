@@ -12,7 +12,7 @@ fi
 
 if [ "$1" == "-start" ]
 	then
-		screen -S electron -dm xvfb-run ./node_modules/.bin/electron .
+		screen -dmS electron -c 'xvfb-run ./node_modules/.bin/electron . > log.txt; exec bash'
 		echo "starting server..."
 fi
 
