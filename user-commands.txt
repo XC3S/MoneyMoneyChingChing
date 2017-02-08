@@ -1,0 +1,44 @@
+    1  ls
+    2  git
+    3  npm
+    4  sudo apt install npm
+    5  ls
+    6  git clone https://github.com/XC3S/MoneyMoneyChingChing.git
+    7  ls
+    8  ls -l
+    9  cd MoneyMoneyChingChing/
+   10  ls
+   11  npm install
+   12  apt-get update
+   13  cd ..
+   14  ls
+   15  apt-get update
+   16  sudo apt-get update
+   17  sudo apt install npm
+   18  ld
+   19  ls
+   20  cd MoneyMoneyChingChing/
+   21  npm install
+   22  npm info
+   23  npm
+   24  sudo npm install
+   25  sudo chown -R $(whoami) /usr/local/bin/
+   26  ls
+   27  sudo npm install
+   28  cd..
+   29  cd ..
+   30  ls
+   31  sudo su
+   32  ls
+   33  sudo su
+   34  top
+   35  sudo su
+   36  ls
+   37  top
+   38  sudo su
+   39  dir
+   40  sudo su
+   41  aws
+   42  sudo su
+   43  history 10
+   44  history 50 > user-commands.txt

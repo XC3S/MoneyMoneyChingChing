@@ -1,0 +1,243 @@
+    1  cd MoneyMoneyChingChing/
+    2  npm install
+    3  cd ..
+    4  node
+    5  npm install nodejs
+    6  ls
+    7  node
+    8  apt-get install nodejs
+    9  ls
+   10  rm -d node_modules/
+   11  rm -rd node_modules/
+   12  ls
+   13  cd MoneyMoneyChingChing/
+   14  npm install
+   15  node
+   16  ls
+   17  cd ..
+   18  ls
+   19  curl -sl https://deb.nodesource.com/setup_6.x | sudo -E bash -
+   20  apt-get install nodejs
+   21  ls
+   22  node
+   23  cd MoneyMoneyChingChing/
+   24  ls
+   25  npm install
+   26  ls
+   27  cd m
+   28  cd MoneyMoneyChingChing/
+   29  ./node_modules/.bin/electron .
+   30  cd ..
+   31  apt-get install xvfb
+   32  cd MoneyMoneyChingChing/
+   33  xvfb-run
+   34  xvfb-run node_modules/.bin/electron .
+   35  xvfb-run ./node_modules/.bin/electron .
+   36  cd ..
+   37  apt-get install libgtx2.0-0:i386
+   38  apt-get install libgtk2.0-0:i386
+   39  clear
+   40  xvfb-run ./node_modules/.bin/electron .
+   41  cd MoneyMoneyChingChing/
+   42  xvfb-run ./node_modules/.bin/electron .
+   43  apt-get install libgtk-x11-2.0.so.0
+   44  apt-get install libgtk-x11-2.0
+   45  apt-get install libgtk2.0-0
+   46  xvfb-run ./node_modules/.bin/electron .
+   47  apt-get install libxtst6
+   48  xvfb-run ./node_modules/.bin/electron .
+   49  apt-get install libxss1
+   50  xvfb-run ./node_modules/.bin/electron .
+   51  apt-get install libgconf-2-4
+   52  xvfb-run ./node_modules/.bin/electron 
+   53  xvfb-run ./node_modules/.bin/electron .
+   54  apt-get install libnss-dev
+   55  apt-get install libnss3-dev
+   56  xvfb-run ./node_modules/.bin/electron .
+   57  apt-get install libasound2
+   58  xvfb-run ./node_modules/.bin/electron .
+   59  cd MoneyMoneyChingChing/
+   60  exec xvfb-run ./node_modules/.bin/electron .
+   61  ls
+   62  screen exec xvfb-run ./node_modules/.bin/electron .
+   63  screen xvfb-run ./node_modules/.bin/electron .
+   64  screen-r
+   65  screen -r
+   66  screen -list
+   67  screen -X -S 14702.pts-0.ip-172-26-1-231 quit
+   68  screen
+   69  screen -list
+   70  xvfb-run ./node_modules/.bin/electron .
+   71  pgrep
+   72  top
+   73  ps aux
+   74  clear
+   75  ps aux
+   76  kill 14614
+   77  ps aux
+   78  kill 14471
+   79  ps aux
+   80  clear
+   81  cd MoneyMoneyChingChing/
+   82  screen xvfb-run ./node_modules/.bin/electron .
+   83  cd MoneyMoneyChingChing/
+   84  ls
+   85  top
+   86  ps aux
+   87  kill 14785
+   88  ps aux
+   89  git pull -r
+   90  git log
+   91  celar
+   92  clear
+   93  screen xvfb-run ./node_modules/.bin/electron .
+   94  screen --list
+   95  screen -list
+   96  screen -r
+   97  screen -r 31911.pts-0.ip-172-26-1-231
+   98  screen -quit 31911.pts-0.ip-172-26-1-231
+   99  pkill screen
+  100  screen -l
+  101  ps aux
+  102  man screen
+  103  apt-get update
+  104  cd MoneyMoneyChingChing/
+  105  git pull -r
+  106  aws
+  107  aws.sh
+  108  ./aws.sh
+  109  ls -l
+  110  cd MoneyMoneyChingChing/
+  111  chmod 777 aws.sh 
+  112  ls -l
+  113  git status
+  114  git add --all
+  115  git status
+  116  git commit -m "fixed script permissions"
+  117  git status
+  118  git push
+  119  ls
+  120  aws.sh
+  121  ./aws.sh
+  122  ./aws.sh -deploy
+  123  ./aws.sh -stop
+  124  git pull -r
+  125  git status
+  126  ./aws.sh
+  127  ./aws.sh -deploy
+  128  ./aws.sh -start
+  129  screen -list
+  130  screen -S electron -dm xvfb-run ./node_modules/.bin/electron .
+  131  screen list
+  132  screen -list
+  133  screen -dm -S electron xvfb-run ./node_modules/.bin/electron .
+  134  screen -list
+  135  screen -dm xvfb-run ./node_modules/.bin/electron .
+  136  screen -list
+  137  screen -dm xvfb-run ./node_modules/.bin/electron .
+  138  screen -list
+  139  pkill screen
+  140  screen -list
+  141  screen xvfb-run ./node_modules/.bin/electron .
+  142  ps aux
+  143  cd MoneyMoneyChingChing/
+  144  screen -dm xvfb-run ./node_modules/.bin/electron .
+  145  screen -list
+  146  screen -dm -S test
+  147  screen -list
+  148  screen -S test -X quit
+  149  screen list
+  150  screen -list
+  151  screen -S .ip-172-26-1-231 -X quit
+  152  screen -list
+  153  git status
+  154  git reset --hard
+  155  git status
+  156  ls
+  157  rd help
+  158  rf help
+  159  rm help
+  160  git status
+  161  top
+  162  clear
+  163  cd MoneyMoneyChingChing/
+  164  ./aws.sh -start
+  165  screen -list
+  166  tail -n 200 -f /var/log/cloud-init.log
+  167  clear
+  168  apt-get update
+  169  cd MoneyMoneyChingChing/
+  170  ls
+  171  ./aws.sh -start
+  172  screen -list
+  173  cd MoneyMoneyChingChing/
+  174  ls
+  175  ./aws.sh -stop
+  176  ls
+  177  clear
+  178  top
+  179  clear
+  180  screen -S 'electron -dm xvfb-run ./node_modules/.bin/electron . > log.txt' 
+  181  screen -S -dm electron xvfb-run ./node_modules/.bin/electron . > log.txt 
+  182  ls
+  183  cd MoneyMoneyChingChing/
+  184  ls
+  185  cd MoneyMoneyChingChing/
+  186  top
+  187  clear
+  188  ./aws -deploy
+  189  ./aws.sh -deploy
+  190  ls
+  191  cat log.txt 
+  192  ls- l
+  193  ls -l
+  194  ./aws -start
+  195  ./aws.sh -start
+  196  top
+  197  clear
+  198  cat log.txt 
+  199  ls -l
+  200  screen -list
+  201  ls
+  202  clear
+  203  ls
+  204  apt-get install nano
+  205  ls
+  206  nano aws.sh 
+  207  ls
+  208  ls -l
+  209  ps
+  210  ps x
+  211  ./aws.sh -start
+  212  cat log.txt 
+  213  ls -l
+  214  screen -list
+  215  ps -help
+  216  ps --help
+  217  ps a
+  218  ps la
+  219  ps lma
+  220  ps la
+  221  clea
+  222  clear
+  223  nano aws.sh 
+  224  ./aws.sh -start
+  225  screen -list
+  226  ls -l
+  227  git status
+  228  tail -r log.txt 
+  229  tail -f log.txt 
+  230  tail -n 200 -f log.txt 
+  231  ls
+  232  cd MoneyMoneyChingChing/
+  233  ls
+  234  ls -l
+  235  ls -l
+  236  screen -list
+  237  ls
+  238  ls -l
+  239  ls
+  240  history 10
+  241  history 100
+  242  history 250
+  243  history 250 > root-commands.txt
