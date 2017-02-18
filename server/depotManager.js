@@ -1,5 +1,7 @@
 module.exports = depotManager();
 
+const fs = require("fs");
+
 function depotManager(){
 	var depots = [];
 	var lastStockData = {};
@@ -50,6 +52,19 @@ function depotManager(){
 				}
 			}
 
+			if (!fs.existsSync(__dirname + '/../storage')){
+			    fs.mkdirSync(__dirname + '/../storage');
+			}
+
+			if(fs.existsSync(__dirname + '/../storage/' + identifier + '.depot' )){
+				console.log("read: " + identifier + ".depot");
+				depot = JSON.parse(fs.readFileSync(__dirname + '/../storage/' + identifier + '.depot'))
+			}
+			else {
+				console.log("create: " + identifier + ".depot");
+				fs.writeFileSync(__dirname + '/../storage/' + identifier + '.depot',JSON.stringify(depot));
+			}
+
 			depot.buy = function(stockData,amount,success,fail) {
 				var successCallback = success || function(){};
 				var failCallback = fail || function(){};
@@ -57,6 +72,7 @@ function depotManager(){
 				if(this.bank.money > stockData.ask * amount) {
 					this.bank.money -= (amount * stockData.ask);
 					this.bank.hold += amount;
+					fs.writeFileSync(__dirname + '/../storage/' + this.id + '.depot',JSON.stringify(depot));
 					successCallback(depot);
 					return
 				}
@@ -71,6 +87,7 @@ function depotManager(){
 				if(this.bank.hold > 0) {
 					this.bank.money += (amount * stockData.bid);
 					this.bank.hold -= amount;
+					fs.writeFileSync(__dirname + '/../storage/' + this.id + '.depot',JSON.stringify(depot));
 					successCallback(depot);
 					return
 				}
